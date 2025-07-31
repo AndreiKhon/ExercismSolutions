@@ -1,0 +1,32 @@
+  armstrongNumbers.calculateArmstrongNumber : Nat -> Nat -> Nat
+  armstrongNumbers.calculateArmstrongNumber number_ pow_ =
+    loop : Nat -> Nat -> Nat -> Nat
+    loop total number pow =
+      match number with
+        0 -> total
+        n ->
+          use Nat + /
+          loop
+            (total + Nat.pow (Nat.mod number 10) pow) (number / 10) pow
+    loop 0 number_ pow_
+
+
+  armstrongNumbers.digitCount : Nat -> Nat
+  armstrongNumbers.digitCount number =
+    match number with
+      0 -> 1
+      n ->
+        use Nat +
+        getOrBug
+          "Bug"
+          (base.Float.toNat (logBase 10.0 (Float.fromNat number)))
+          + 1
+
+
+  armstrongNumbers.isArmstrongNumber : Nat -> Boolean
+  armstrongNumbers.isArmstrongNumber number =
+    use Nat ==
+    number
+      |> digitCount
+      |> calculateArmstrongNumber number
+      |> (==) number

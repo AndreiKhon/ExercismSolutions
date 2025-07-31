@@ -1,0 +1,20 @@
+  collatzConjecture.steps : Nat -> Optional Nat
+  collatzConjecture.steps = cases
+    0 -> None
+    1 -> Some 0
+    n -> Some (requiredSteps n)
+    _ -> None
+
+
+  collatzConjecture.requiredSteps : Nat -> Nat
+  collatzConjecture.requiredSteps n =
+    use Nat +
+    use collatzConjecture requiredSteps
+    match n with
+      1 -> 0
+      n | Nat.isEven n ->
+        use Nat /
+        requiredSteps (n / 2) + 1
+      _ ->
+        use Nat *
+        requiredSteps (3 * n + 1) + 1

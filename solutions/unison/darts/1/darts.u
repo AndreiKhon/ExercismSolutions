@@ -1,0 +1,15 @@
+  darts.score : Float -> Float -> Nat
+  darts.score x y =
+    use Float <
+    match hypot x y with
+      n 
+        | n <= 1.0   -> 10
+        | n <= 5.0   -> 5
+        | n <= 10.0  -> 1
+        | otherwise -> 0
+
+
+  hypot : Float -> Float -> Float
+  hypot a b =
+    use Float * +
+    sqrt (a * a + (b * b))

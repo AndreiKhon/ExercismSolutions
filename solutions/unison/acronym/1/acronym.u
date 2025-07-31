@@ -1,0 +1,12 @@
+  abbreviate : Text -> Text
+  abbreviate text =
+    use List map
+    toCharList text
+      |> List.split (isOneOf [?\s, ?-])
+      |> map (List.filter isLetter)
+      |> List.filterMap List.head
+      |> map ascii.toUpper
+      |> fromCharList
+
+  isOneOf : [a] -> a -> Boolean
+  isOneOf = flip elem

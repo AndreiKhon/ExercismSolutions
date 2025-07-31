@@ -1,0 +1,16 @@
+  raindrops.convert : Nat -> Text
+  raindrops.convert n =
+    raindrop = cases
+      (factor, text) ->
+        use Nat ==
+        if Nat.mod n factor == 0 then Some text else None
+    texts = base.data.List.filterMap raindrop factors
+    match texts with
+      []    -> Nat.toText n
+      stuff ->
+        use Text ++
+        List.foldLeft (++) "" stuff
+
+
+  factors : [(Nat, Text)]
+  factors = [(3, "Pling"), (5, "Plang"), (7, "Plong")]
