@@ -1,0 +1,11 @@
+  sumOfMultiples.sumOfMultiples : [Nat] -> Nat -> Nat
+  sumOfMultiples.sumOfMultiples targets upperBound =
+    use Nat != ==
+    Nat.range 1 upperBound
+      |> List.filter
+           (multiple ->
+             List.any
+               (divisor ->
+                 (divisor != 0) && (Nat.mod multiple divisor == 0))
+               targets)
+      |> sum
